@@ -1,0 +1,13 @@
+22:41 24/03/2016
+
+	Cliente, teste inicial ...
+
+	Funcionando ... !
+
+13:50 24/03/2016
+
+	Comportamento extranho ...
+
+		Ficou só a tb_cliente no dbcontasimples;
+
+	Estranho!
