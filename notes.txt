@@ -1,13 +1,24 @@
+________________
+00:16 26/03/2016
+
+	Cliente, Conta e Movimento ... 
+
+		Teste incial;
+
+	Funcionando!
+
+________________
 22:41 24/03/2016
 
 	Cliente, teste inicial ...
 
 	Funcionando ... !
 
+________________
 13:50 24/03/2016
 
-	Comportamento extranho ...
+	Comportamento estranho ...
 
-		Ficou só a tb_cliente no dbcontasimples;
+		Ficou sÃ³ a tb_cliente no dbcontasimples;
 
 	Estranho!
