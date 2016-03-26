@@ -9,7 +9,7 @@ import javax.jws.WebService;
 
 import model.dao.ClienteDao;
 import model.domain.Cliente;
-import model.domain.ClienteFacade;
+import model.facade.ClienteFacade;
 
 @WebService(serviceName="ws/cliente")
 public class ClienteFacadeImpl implements ClienteFacade {

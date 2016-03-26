@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import model.dao.ClienteDao;
 import model.domain.Cliente;
-import model.domain.ClienteFacade;
+import model.facade.ClienteFacade;
 
 @Path("/cliente")
 @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
