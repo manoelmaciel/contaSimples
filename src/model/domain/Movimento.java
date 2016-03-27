@@ -29,23 +29,23 @@ public class Movimento implements Serializable {
 	@Column(name="CD_MOVIMENTO")
 	private Integer codigo;
 	
+	@Temporal(TemporalType.DATE)
+	@Column(name="DT_MOVIMENTO")
+	private Date data;
+
 	@Column(name="DS_MOVIMENTO")
 	private String descricao;
+
+	@Column(name="TP_MOVIMENTO")
+	private MovimentoTipoEnum tipo; // Despesa - Receita
+
+	@Column(name="VL_MOVIMENTO")
+	private Double valor;
 
 	@ManyToOne
 	@JoinColumn(name="CD_CONTA",referencedColumnName="CD_CONTA")
 	private Conta conta;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="DT_MOVIMENTO")
-	private Date data;
-
-	@Column(name="VL_MOVIMENTO")
-	private Double valor;
-
-	@Column(name="TP_MOVIMENTO")
-	private MovimentoTipoEnum tipo; // Despesa / Receita
-
 	public Movimento() {
 		// Constructor empty ... !
 	}

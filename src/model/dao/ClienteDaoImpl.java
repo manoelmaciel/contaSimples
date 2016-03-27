@@ -24,7 +24,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		}
 		Query query = entityManager.createQuery(hql.toString());
 		if (cliente.getCodigo() != null) {
-			query.setParameter("codigo",cliente.getCodigo());
+			query.setParameter("codigo", cliente.getCodigo());
 		} 
 		return query.getResultList();
 	}
