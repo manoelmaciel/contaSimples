@@ -1,4 +1,27 @@
-﻿________________
+﻿14:27 01/04/2016
+
+	TESTES
+
+	1. Cliente CRUD rs ...
+
+	   Ok!
+
+	2. Cliente CRUD ws ...
+
+ 	   Funcionando parcialmente:
+
+	      getClientes; e
+	      getClientesCodigo.
+	
+		 O restante do CRUD bichado:
+
+		    Caused by: 
+		    javax.xml.bind.UnmarshalException: 
+			elemento inesperado (uri:"http://ws.facade.model/", local:"cliente"). 
+			Os elementos esperados são <{}cliente>
+	
+
+________________
 02:41 27/03/2016
 
 	Balanço ... 

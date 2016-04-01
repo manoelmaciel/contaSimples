@@ -39,6 +39,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	@Override
 	@Transactional
 	public Cliente salvar(Cliente cliente) {
+		cliente.setCodigo(null);
 		entityManager.persist(cliente);
 		return cliente;
 	}
