@@ -32,12 +32,12 @@ public class ClienteFacadeImpl implements ClienteFacade {
 	}
 	
 	@WebMethod
-	public Cliente salvar(@WebParam(name="cliente") Cliente cliente) {
+	public Cliente salvar(@WebParam(name="novoCliente") Cliente cliente) {
 		return clienteDao.salvar(cliente);
 	}
 	
-	@WebMethod(operationName="atualizarCliente")
-	public void atualizar(@WebParam(name="cliente") Cliente cliente) {
+	@WebMethod
+	public void atualizar(@WebParam(name="novoCliente") Cliente cliente) {
 		clienteDao.atualizar(cliente);
 	}
 	

@@ -24,10 +24,6 @@ public class Cliente implements Serializable {
 	@Column(name="NM_CLIENTE")
 	private String nome;
 
-	public Cliente() {
-		// Constructor empty ... !
-	}
-
 	public Integer getCodigo() {
 		return codigo;
 	}
