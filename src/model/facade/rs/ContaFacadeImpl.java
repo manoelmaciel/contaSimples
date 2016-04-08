@@ -4,7 +4,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -38,22 +41,26 @@ public class ContaFacadeImpl implements ContaFacade {
 		return contaDao.getContas(conta);
 	}
 	
+	@POST
 	@Override
 	public Conta salvar(Conta conta) {
-		// TODO Auto-generated method stub
-		return null;
+		conta = contaDao.salvar(conta);
+	 	return conta;
 	}
 
+	@PUT
 	@Override
 	public void atualizar(Conta conta) {
-		// TODO Auto-generated method stub
-
+		contaDao.atualizar(conta);
 	}
 
+	@DELETE
+	@Path("/{codigo}")
 	@Override
-	public void deletar(Integer codigo) {
-		// TODO Auto-generated method stub
-
+	public void deletar(@PathParam("codigo") Integer codigo) {
+		Conta conta = new Conta();
+		conta.setCodigo(codigo);
+		contaDao.excluir(conta);
 	}
 
 }

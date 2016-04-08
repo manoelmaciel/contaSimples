@@ -6,12 +6,12 @@ import model.domain.Cliente;
 
 public interface ClienteDao {
 
-	List<Cliente> getClientes(Cliente cliente);
-	
-	public void excluir(Cliente cliente);
-
 	Cliente salvar(Cliente cliente);
 
+	List<Cliente> getClientes(Cliente cliente);
+	
 	void atualizar(Cliente cliente);
+
+	void excluir(Cliente cliente);
 
 }

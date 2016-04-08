@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import model.domain.Conta;
 
@@ -29,21 +30,25 @@ public class ContaDaoImpl implements ContaDao {
 	}
 
 	@Override
-	public void excluir(Conta Conta) {
-		// TODO Auto-generated method stub
-
+	@Transactional
+	public void excluir(Conta conta) {
+		conta = entityManager.merge(conta);
+		entityManager.remove(conta);
 	}
 
 	@Override
-	public Conta salvar(Conta Conta) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public Conta salvar(Conta conta) {
+		conta.setCodigo(null);
+		entityManager.persist(conta);
+		return conta;
 	}
 
 	@Override
-	public void atualizar(Conta Conta) {
-		// TODO Auto-generated method stub
-
+	@Transactional
+	public void atualizar(Conta conta) {
+		conta = entityManager.merge(conta);
+		entityManager.persist(conta);		
 	}
 
 }

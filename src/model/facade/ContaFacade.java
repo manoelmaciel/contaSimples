@@ -6,11 +6,11 @@ import model.domain.Conta;
 
 public interface ContaFacade {
 	
+	Conta salvar(Conta conta);
+
 	List<Conta> getContas();
 
 	List<Conta> getContas(Integer codigo);
-
-	Conta salvar(Conta conta);
 
 	void atualizar(Conta conta);
 

@@ -6,12 +6,12 @@ import model.domain.Conta;
 
 public interface ContaDao {
 
-	List<Conta> getContas(Conta conta);
-	
-	public void excluir(Conta conta);
-
 	Conta salvar(Conta conta);
 
+	List<Conta> getContas(Conta conta);
+	
 	void atualizar(Conta conta);
+
+	void excluir(Conta conta);
 
 }
