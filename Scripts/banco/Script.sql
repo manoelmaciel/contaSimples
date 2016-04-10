@@ -1,0 +1,140 @@
+-- MySQL dump 10.10
+--
+-- Host: localhost    Database: relatorios
+-- ------------------------------------------------------
+-- Server version	5.0.18-nt
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+DROP DATABASE IF EXISTS `dbContaSimples`;
+
+CREATE DATABASE `dbContaSimples`;
+
+USE dbContaSimples;
+
+--
+-- Table structure for table `TB_CLIENTE`
+--
+
+DROP TABLE IF EXISTS `TB_CLIENTE`;
+CREATE TABLE `TB_CLIENTE` (
+  `CD_CLIENTE` int(11) NOT NULL auto_increment,
+  `NM_CLIENTE` varchar(40) NOT NULL,
+  PRIMARY KEY  (`CD_CLIENTE`),
+  KEY `NM_CATEGORIA` (`NM_CLIENTE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `TB_CLIENTE`
+--
+
+/*!40000 ALTER TABLE `TB_CLIENTE` DISABLE KEYS */;
+LOCK TABLES `TB_CLIENTE` WRITE;
+INSERT INTO `TB_CLIENTE` VALUES (1, 'cliente');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `TB_CLIENTE` ENABLE KEYS */;
+
+--
+-- Table structure for table `TB_CONTA`
+--
+
+DROP TABLE IF EXISTS `TB_CONTA`;
+CREATE TABLE `TB_CONTA` (
+  `CD_CONTA` int(11) NOT NULL auto_increment,
+  `CD_CLIENTE` int(11) NOT NULL,
+  PRIMARY KEY  (`CD_CONTA`),
+  KEY `CD_CLIENTE` (`CD_CLIENTE`),
+  KEY `fk_CLIENTE` (`CD_CLIENTE`),
+  CONSTRAINT `fk_CLIENTE` FOREIGN KEY (`CD_CLIENTE`) REFERENCES `TB_CLIENTE` (`CD_CLIENTE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `TB_CONTA`
+--
+
+
+/*!40000 ALTER TABLE `TB_CONTA` DISABLE KEYS */;
+LOCK TABLES `TB_CONTA` WRITE;
+INSERT INTO `TB_CONTA` VALUES (1, 1);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `TB_CONTA` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `TB_MOVIMENTO`
+--
+
+DROP TABLE IF EXISTS `TB_MOVIMENTO`;
+CREATE TABLE `TB_MOVIMENTO` (
+  `CD_MOVIMENTO` int(11) NOT NULL auto_increment,
+  `DS_MOVIMENTO` varchar(40) NOT NULL,
+  tb_movimento`CD_CONTA` int(11) default NULL,
+  `DT_MOVIMENTO` datetime default NULL,
+  `VL_MOVIMENTO` double(10,2) default NULL,
+  `TP_MOVIMENTO` char default NULL,
+  PRIMARY KEY  (`CD_MOVIMENTO`),
+  KEY `CD_CONTA` (`CD_CONTA`),
+  CONSTRAINT `fk_conta` FOREIGN KEY (`CD_CONTA`) REFERENCES `TB_CONTA` (`CD_CONTA`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `TB_MOVIMENTO`
+--
+
+
+/*!40000 ALTER TABLE `TB_MOVIMENTO` DISABLE KEYS */;
+LOCK TABLES `TB_MOVIMENTO` WRITE;
+/*!40000 ALTER TABLE `TB_MOVIMENTO` DISABLE KEYS */;
+LOCK TABLES `TB_MOVIMENTO` WRITE;
+INSERT INTO `TB_MOVIMENTO` VALUES 
+	(1, '2016-01-25', 'Saldo inicial', '1', 0, 1), 
+	(2, '2016-01-25', 'Salario', '1', 2100.00, 1), 
+	(3, '2016-01-25', 'Agua', '0', 101.00, 1), 
+    (4, '2016-01-25', 'Luz', '0', 201.00, 1), 
+	(5, '2016-01-25', 'Telefone', '0', 301.00, 1), 
+    (6, '2016-01-25', 'Aluguel', '0', 401.00, 1), 
+	(7, '2016-01-25', 'Supermercado', '0', 501.00, 1), 
+    (8, '2016-01-25', 'Carne', '0', 601.00, 1), 
+	(9, '2016-01-25', 'Feira', '0', 701.00, 1), 
+    (10, '2016-01-25', 'Lanche', '0', 801.00, 1),
+	(11, '2016-02-25', 'Salario', '1', 2200.00, 1), 
+	(12, '2016-02-25', 'Agua', '0', 102.00, 1), 
+    (13, '2016-02-25', 'Luz', '0', 202.00, 1), 
+	(14, '2016-02-25', 'Telefone', '0', 302.00, 1), 
+    (15, '2016-02-25', 'Aluguel', '0', 402.00, 1), 
+	(16, '2016-02-25', 'Supermercado', '0', 502.00, 1), 
+    (17, '2016-02-25', 'Carne', '0', 602.00, 1), 
+	(18, '2016-02-25', 'Feira', '0', 702.00, 1), 
+    (19, '2016-02-25', 'Lanche', '0', 802.00, 1),
+	(20, '2016-03-25', 'Salario', '1', 2300.00, 1), 
+	(21, '2016-03-25', 'Agua', '0', 103.00, 1), 
+    (22, '2016-03-25', 'Luz', '0', 203.00, 1), 
+	(23, '2016-03-25', 'Telefone', '0', 303.00, 1), 
+    (24, '2016-03-25', 'Aluguel', '0', 403.00, 1), 
+	(25, '2016-03-25', 'Supermercado', '0', 503.00, 1), 
+    (26, '2016-03-25', 'Carne', '0', 603.00, 1), 
+	(27, '2016-03-25', 'Feira', '0', 703.00, 1), 
+    (28, '2016-03-25', 'Lanche', '0', 803.00, 1);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `TB_MOVIMENTO` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `TB_MOVIMENTO` ENABLE KEYS */;
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
