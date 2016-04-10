@@ -4,8 +4,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -18,36 +22,43 @@ import model.domain.Movimento;
 public class MovimentoFacadeImpl implements model.facade.MovimentoFacade {
 
 	@Inject
-	private MovimentoDao contaDao;
+	private MovimentoDao movimentoDao;
 	
 	@GET
 	@Override
 	public List<Movimento> getMovimentos() {
-		return contaDao.getMovimentos(new Movimento());
+		return movimentoDao.getMovimentos(new Movimento());
 	}
 
+	@GET
+	@Path("/{codigo}")
 	@Override
-	public List<Movimento> getMovimentos(Integer codigo) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Movimento> getMovimentos(@PathParam("codigo") Integer codigo) {
+		Movimento movimento = new Movimento();
+		movimento.setCodigo(codigo);
+		return movimentoDao.getMovimentos(movimento);
 	}
 
+	@POST
 	@Override
 	public Movimento salvar(Movimento movimento) {
-		// TODO Auto-generated method stub
-		return null;
+		movimentoDao.salvar(movimento);
+		return movimento;
 	}
 
+	@PUT
 	@Override
 	public void atualizar(Movimento movimento) {
-		// TODO Auto-generated method stub
-
+		movimentoDao.atualizar(movimento);
 	}
 
+	@DELETE
+	@Path("/{codigo}")
 	@Override
-	public void deletar(Integer codigo) {
-		// TODO Auto-generated method stub
-
+	public void deletar(@PathParam("codigo") Integer codigo) {
+		Movimento movimento = new Movimento();
+		movimento.setCodigo(codigo);
+		movimentoDao.excluir(movimento);
 	}
 
 }

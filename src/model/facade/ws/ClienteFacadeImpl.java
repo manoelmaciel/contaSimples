@@ -48,5 +48,4 @@ public class ClienteFacadeImpl implements ClienteFacade {
 		clienteDao.excluir(cliente);
 	}
 
-
 }

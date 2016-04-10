@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import model.domain.Movimento;
 
@@ -29,21 +30,25 @@ public class MovimentoDaoImpl implements MovimentoDao {
 	}
 
 	@Override
+	@Transactional
 	public void excluir(Movimento movimento) {
-		// TODO Auto-generated method stub
-
+		movimento = entityManager.merge(movimento);
+		entityManager.remove(movimento);
 	}
 
 	@Override
+	@Transactional
 	public Movimento salvar(Movimento movimento) {
-		// TODO Auto-generated method stub
-		return null;
+		movimento.setCodigo(null);
+		entityManager.persist(movimento);
+		return movimento;
 	}
 
 	@Override
+	@Transactional
 	public void atualizar(Movimento movimento) {
-		// TODO Auto-generated method stub
-
+		movimento = entityManager.merge(movimento);
+		entityManager.persist(movimento);
 	}
 
 }

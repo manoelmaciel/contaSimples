@@ -27,10 +27,6 @@ public class Conta implements Serializable {
 	@JoinColumn(name="CD_CLIENTE",referencedColumnName="CD_CLIENTE")
 	private Cliente cliente;
 
-	public Conta() {
-		// Constructor empty ... !
-	}
-
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -51,7 +47,6 @@ public class Conta implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
@@ -65,11 +60,6 @@ public class Conta implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Conta other = (Conta) obj;
-		if (cliente == null) {
-			if (other.cliente != null)
-				return false;
-		} else if (!cliente.equals(other.cliente))
-			return false;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

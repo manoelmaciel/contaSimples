@@ -8,7 +8,7 @@ public interface MovimentoDao {
 
 	List<Movimento> getMovimentos(Movimento movimento);
 	
-	public void excluir(Movimento movimento);
+	void excluir(Movimento movimento);
 
 	Movimento salvar(Movimento movimento);
 
