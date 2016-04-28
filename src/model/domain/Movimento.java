@@ -19,51 +19,71 @@ import utils.MovimentoTipoEnum;
 
 @XmlRootElement
 @Entity
-@Table(name="TB_MOVIMENTO")
+@Table(name="MOVIMENTOS")
 public class Movimento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="CD_MOVIMENTO")
-	private Integer codigo;
+	@Column(name="idMovimento")
+	private Integer codigoMovimento;
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name="DT_MOVIMENTO")
-	private Date data;
+	@Column(name="dtMovimento")
+	private Date dataMovimento;
 
-	@Column(name="DS_MOVIMENTO")
-	private String descricao;
+	@Column(name="descMovimento")
+	private String descricaoMovimento;
 
-	@Column(name="TP_MOVIMENTO")
-	private MovimentoTipoEnum tipo; // Despesa - Receita
+	@Column(name="tpMovimento")
+	private MovimentoTipoEnum tipoMovimento; // Despesa - Receita
 
-	@Column(name="VL_MOVIMENTO")
-	private Double valor;
+	@Column(name="vlMovimento")
+	private Double valorMovimento;
 
 	@ManyToOne
-	@JoinColumn(name="CD_CONTA",referencedColumnName="CD_CONTA")
+	@JoinColumn(name="conta",referencedColumnName="idConta")
 	private Conta conta;
-	
-	public Movimento() {
-		// Constructor empty ... !
+
+	public Integer getCodigoMovimento() {
+		return codigoMovimento;
 	}
 
-	public Integer getCodigo() {
-		return codigo;
+	public void setCodigoMovimento(Integer codigoMovimento) {
+		this.codigoMovimento = codigoMovimento;
 	}
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+	public Date getDataMovimento() {
+		return dataMovimento;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public void setDataMovimento(Date dataMovimento) {
+		this.dataMovimento = dataMovimento;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public String getDescricaoMovimento() {
+		return descricaoMovimento;
+	}
+
+	public void setDescricaoMovimento(String descricaoMovimento) {
+		this.descricaoMovimento = descricaoMovimento;
+	}
+
+	public MovimentoTipoEnum getTipoMovimento() {
+		return tipoMovimento;
+	}
+
+	public void setTipoMovimento(MovimentoTipoEnum tipoMovimento) {
+		this.tipoMovimento = tipoMovimento;
+	}
+
+	public Double getValorMovimento() {
+		return valorMovimento;
+	}
+
+	public void setValorMovimento(Double valorMovimento) {
+		this.valorMovimento = valorMovimento;
 	}
 
 	public Conta getConta() {
@@ -74,35 +94,11 @@ public class Movimento implements Serializable {
 		this.conta = conta;
 	}
 
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
-	public Double getValor() {
-		return valor;
-	}
-
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-
-	public MovimentoTipoEnum getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(MovimentoTipoEnum tipo) {
-		this.tipo = tipo;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((codigoMovimento == null) ? 0 : codigoMovimento.hashCode());
 		return result;
 	}
 
@@ -115,10 +111,10 @@ public class Movimento implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Movimento other = (Movimento) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
+		if (codigoMovimento == null) {
+			if (other.codigoMovimento != null)
 				return false;
-		} else if (!codigo.equals(other.codigo))
+		} else if (!codigoMovimento.equals(other.codigoMovimento))
 			return false;
 		return true;
 	}

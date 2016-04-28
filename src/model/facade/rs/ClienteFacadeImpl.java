@@ -36,7 +36,7 @@ public class ClienteFacadeImpl implements ClienteFacade {
 	@Override
 	public List<Cliente> getClientes(@PathParam("codigo") Integer codigo) {
 		Cliente cliente = new Cliente();
-		cliente.setCodigo(codigo);
+		cliente.setCodigoCliente(codigo);
 		return clienteDao.getClientes(cliente);
 	}
 	
@@ -58,7 +58,7 @@ public class ClienteFacadeImpl implements ClienteFacade {
 	@Override
 	public void deletar(@PathParam("codigo") Integer codigo) {
 		Cliente cliente = new Cliente();
-		cliente.setCodigo(codigo);
+		cliente.setCodigoCliente(codigo);
 		clienteDao.excluir(cliente);
 	}
 

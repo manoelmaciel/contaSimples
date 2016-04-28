@@ -4,77 +4,45 @@
 -- ------------------------------------------------------
 -- Server version	5.0.18-nt
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
 USE dbContaSimples;
 
-/*!40000 ALTER TABLE `TB_CLIENTE` DISABLE KEYS */;
-LOCK TABLES `TB_CLIENTE` WRITE;
-INSERT INTO `TB_CLIENTE` VALUES(1, 'Cliente1'),  (2, 'Cliente2'),  (3, 'Cliente3'),  (4, 'Cliente4'),  (5, 'Cliente5');
-UNLOCK TABLES;
-/*!40000 ALTER TABLE `TB_CLIENTE` ENABLE KEYS */;
+INSERT INTO `CLIENTES` VALUES(1, 'Cliente1'),  (2, 'Cliente2'),  (3, 'Cliente3'),  (4, 'Cliente4'),  (5, 'Cliente5');
 
+INSERT INTO `CONTAS` VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5); 
 
-/*!40000 ALTER TABLE `TB_CONTA` DISABLE KEYS */;
-LOCK TABLES `TB_CONTA` WRITE;
-INSERT INTO `TB_CONTA` VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5); 
-UNLOCK TABLES;
-/*!40000 ALTER TABLE `TB_CONTA` ENABLE KEYS */;
-
-
-/*!40000 ALTER TABLE `TB_MOVIMENTO` DISABLE KEYS */;
-LOCK TABLES `TB_MOVIMENTO` WRITE;
-/*!40000 ALTER TABLE `TB_MOVIMENTO` DISABLE KEYS */;
-LOCK TABLES `TB_MOVIMENTO` WRITE;
-INSERT INTO `TB_MOVIMENTO` VALUES 
-	(1, '2016-01-1', 'Saldo inicial', '1', 0, 1), 
-	(2, '2016-01-11', 'Salario', '1', 2100.00, 1), 
+INSERT INTO `MOVIMENTOS` VALUES 
+	(1, '2016-01-11', 'Saldo inicial', '1', 1.00, 1), 
+	(2, '2016-01-11', 'Salario', '1', 2101.00, 1), 
 	(3, '2016-01-11', 'Agua', '0', 101.00, 1), 
     (4, '2016-01-13', 'Luz', '0', 201.00, 1), 
 	(5, '2016-01-13', 'Telefone', '0', 301.00, 1), 
     (6, '2016-01-15', 'Aluguel', '0', 401.00, 1), 
 	(7, '2016-01-15', 'Supermercado', '0', 501.00, 1), 
-    (8, '2016-01-17', 'Carne', '0', 601.00, 1), 
-	(9, '2016-01-17', 'Feira', '0', 701.00, 1), 
-    (10, '2016-01-19', 'Lanche', '0', 801.00, 1),
-	(11, '2016-02-2', 'Salario', '1', 2200.00, 1), 
-	(12, '2016-02-22', 'Agua', '0', 102.00, 1), 
-    (13, '2016-02-22', 'Luz', '0', 202.00, 1), 
-	(14, '2016-02-24', 'Telefone', '0', 302.00, 1), 
-    (15, '2016-02-24', 'Aluguel', '0', 402.00, 1), 
-	(16, '2016-02-26', 'Supermercado', '0', 502.00, 1), 
-    (17, '2016-02-26', 'Carne', '0', 602.00, 1), 
-	(18, '2016-02-28', 'Feira', '0', 702.00, 1), 
-    (19, '2016-02-28', 'Lanche', '0', 802.00, 1),
-	(20, '2016-03-25', 'Salario', '1', 2300.00, 1), 
-	(21, '2016-03-25', 'Agua', '0', 103.00, 1), 
-    (22, '2016-03-25', 'Luz', '0', 203.00, 1), 
-	(23, '2016-03-25', 'Telefone', '0', 303.00, 1), 
-    (24, '2016-03-25', 'Aluguel', '0', 403.00, 1), 
-	(25, '2016-03-25', 'Supermercado', '0', 503.00, 1), 
-    (26, '2016-03-25', 'Carne', '0', 603.00, 1), 
-	(27, '2016-03-25', 'Feira', '0', 703.00, 1), 
-    (28, '2016-03-25', 'Lanche', '0', 803.00, 1);
-UNLOCK TABLES;
-/*!40000 ALTER TABLE `TB_MOVIMENTO` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40000 ALTER TABLE `TB_MOVIMENTO` ENABLE KEYS */;
-
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
+	(8, '2016-01-11', 'Saldo inicial', '1', 2.00, 2), 
+	(9, '2016-01-11', 'Salario', '1', 2102.00, 2), 
+	(10, '2016-01-11', 'Agua', '0', 102.00, 2), 
+    (11, '2016-01-13', 'Luz', '0', 202.00, 2), 
+	(12, '2016-01-13', 'Telefone', '0', 302.00, 2), 
+    (13, '2016-01-15', 'Aluguel', '0', 402.00, 2), 
+	(14, '2016-01-15', 'Supermercado', '0', 502.00, 2), 
+	(15, '2016-01-11', 'Saldo inicial', '1', 3.00, 3), 
+	(16, '2016-01-11', 'Salario', '1', 2103.00, 3), 
+	(17, '2016-01-11', 'Agua', '0', 103.00, 3), 
+    (18, '2016-01-13', 'Luz', '0', 203.00, 3), 
+	(19, '2016-01-13', 'Telefone', '0', 303.00, 3), 
+    (20, '2016-01-15', 'Aluguel', '0', 403.00, 3), 
+	(21, '2016-01-15', 'Supermercado', '0', 503.00, 3), 
+	(22, '2016-01-11', 'Saldo inicial', '1', 4.00, 4), 
+	(23, '2016-01-11', 'Salario', '1', 2104.00, 4), 
+	(24, '2016-01-11', 'Agua', '0', 104.00, 4), 
+    (25, '2016-01-13', 'Luz', '0', 204.00,4 ), 
+	(26, '2016-01-13', 'Telefone', '0', 304.00, 4), 
+    (27, '2016-01-15', 'Aluguel', '0', 404.00, 4), 
+	(28, '2016-01-15', 'Supermercado', '0', 504.00, 4), 
+	(29, '2016-01-11', 'Saldo inicial', '1', 5.00, 5), 
+	(30, '2016-01-11', 'Salario', '1', 2105.00, 5), 
+	(31, '2016-01-11', 'Agua', '0', 105.00, 5), 
+    (32, '2016-01-13', 'Luz', '0', 205.00, 5), 
+	(33, '2016-01-13', 'Telefone', '0', 305.00, 5), 
+    (34, '2016-01-15', 'Aluguel', '0', 405.00, 5), 
+	(35, '2016-01-15', 'Supermercado', '0', 505.00, 5); 

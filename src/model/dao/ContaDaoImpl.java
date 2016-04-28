@@ -11,7 +11,7 @@ import model.domain.Conta;
 
 public class ContaDaoImpl implements ContaDao {
 
-	@PersistenceContext(unitName="ContaSimplesPU")
+	@PersistenceContext(unitName="contaSimplesPU")
 	private EntityManager entityManager;
 	
 	@SuppressWarnings("unchecked")
@@ -19,12 +19,12 @@ public class ContaDaoImpl implements ContaDao {
 	public List<Conta> getContas(Conta conta) {
 		StringBuffer hql = new StringBuffer("from Conta c"
 				+ " where 1 = 1");		
-		if (conta.getCodigo() != null) {
+		if (conta.getCodigoConta() != null) {
 			hql.append(" and c.codigo = :codigo");
 		}
 		Query query = entityManager.createQuery(hql.toString());
-		if (conta.getCodigo() != null) {
-			query.setParameter("codigo", conta.getCodigo());
+		if (conta.getCodigoConta() != null) {
+			query.setParameter("codigo", conta.getCodigoConta());
 		} 
 		return query.getResultList();
 	}
@@ -39,7 +39,7 @@ public class ContaDaoImpl implements ContaDao {
 	@Override
 	@Transactional
 	public Conta salvar(Conta conta) {
-		conta.setCodigo(null);
+		conta.setCodigoConta(null);
 		entityManager.persist(conta);
 		return conta;
 	}

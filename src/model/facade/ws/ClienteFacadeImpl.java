@@ -27,7 +27,7 @@ public class ClienteFacadeImpl implements ClienteFacade {
 	public List<Cliente> getClientes(@WebParam(name="codigoCliente") 
 							Integer codigo) {
 		Cliente cliente = new Cliente();
-		cliente.setCodigo(codigo);
+		cliente.setCodigoCliente(codigo);
 		return clienteDao.getClientes(cliente);
 	}
 	
@@ -44,7 +44,7 @@ public class ClienteFacadeImpl implements ClienteFacade {
 	@WebMethod
 	public void deletar(@WebParam(name="codigoCliente") Integer codigo) {
 		Cliente cliente = new Cliente();
-		cliente.setCodigo(codigo);
+		cliente.setCodigoCliente(codigo);
 		clienteDao.excluir(cliente);
 	}
 

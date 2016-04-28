@@ -1,6 +1,7 @@
 package model.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,40 +12,40 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
-@Table(name="TB_CLIENTE")
+@Table(name="CLIENTES")
 public class Cliente implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="CD_CLIENTE")
-	private Integer codigo;
+	@Column(name="idCliente")
+	private Integer codigoCliente;
 	
-	@Column(name="NM_CLIENTE")
-	private String nome;
-
-	public Integer getCodigo() {
-		return codigo;
+	@Column(name="nmCliente")
+	private String nomeCliente;
+	
+	public Integer getCodigoCliente() {
+		return codigoCliente;
 	}
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+	public void setCodigoCliente(Integer codigoCliente) {
+		this.codigoCliente = codigoCliente;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getNomeCliente() {
+		return nomeCliente;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((codigoCliente == null) ? 0 : codigoCliente.hashCode());
 		return result;
 	}
 
@@ -57,12 +58,12 @@ public class Cliente implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
+		if (codigoCliente == null) {
+			if (other.codigoCliente != null)
 				return false;
-		} else if (!codigo.equals(other.codigo))
+		} else if (!codigoCliente.equals(other.codigoCliente))
 			return false;
 		return true;
 	}
-
+	
 }

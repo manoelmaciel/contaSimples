@@ -11,20 +11,20 @@ import model.domain.Movimento;
 
 public class MovimentoDaoImpl implements MovimentoDao {
 
-	@PersistenceContext(unitName="ContaSimplesPU")
+	@PersistenceContext(unitName="contaSimplesPU")
 	private EntityManager entityManager;
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Movimento> getMovimentos(Movimento movimento) {
-		StringBuffer hql = new StringBuffer("from Movimento c"
-				+ " where 1 = 1");		
-		if (movimento.getCodigo() != null) {
-			hql.append(" and c.codigo = :codigo");
+		StringBuffer hql = new StringBuffer("from Movimento m "
+				+ "where 1 = 1");		
+		if (movimento.getCodigoMovimento() != null) {
+			hql.append(" and m.codigo = :codigo");
 		}
 		Query query = entityManager.createQuery(hql.toString());
-		if (movimento.getCodigo() != null) {
-			query.setParameter("codigo", movimento.getCodigo());
+		if (movimento.getCodigoMovimento() != null) {
+			query.setParameter("codigo", movimento.getDataMovimento());
 		} 
 		return query.getResultList();
 	}
@@ -39,7 +39,7 @@ public class MovimentoDaoImpl implements MovimentoDao {
 	@Override
 	@Transactional
 	public Movimento salvar(Movimento movimento) {
-		movimento.setCodigo(null);
+		movimento.setCodigoMovimento(null);
 		entityManager.persist(movimento);
 		return movimento;
 	}

@@ -27,7 +27,7 @@ public class ContaFacadeImpl implements ContaFacade {
 	public List<Conta> getContas(@WebParam(name="codigoConta") 
 							Integer codigo) {
 		Conta conta = new Conta();
-		conta.setCodigo(codigo);
+		conta.setCodigoConta(codigo);
 		return contaDao.getContas(conta);
 	}
 	
@@ -44,7 +44,7 @@ public class ContaFacadeImpl implements ContaFacade {
 	@WebMethod
 	public void deletar(@WebParam(name="codigoConta") Integer codigo) {
 		Conta conta = new Conta();
-		conta.setCodigo(codigo);
+		conta.setCodigoConta(codigo);
 		contaDao.excluir(conta);
 	}
 

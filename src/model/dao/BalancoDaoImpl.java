@@ -13,15 +13,15 @@ import model.domain.Movimento;
 
 public class BalancoDaoImpl implements BalancoDao {
 
-	@PersistenceContext(unitName="ContaSimplesPU")
+	@PersistenceContext(unitName="contaSimplesPU")
 	private EntityManager entityManager;
 	
 	@SuppressWarnings("unchecked")
 	@Override	
 	public List<Movimento> balancoMensal(Date mesAno) {
 		// TODO Falta concluir o balanço mensal ... !
-		StringBuffer hql = new StringBuffer("from Movimento c"
-				+ " where c.dt_movimento = 0");		
+		StringBuffer hql = new StringBuffer("from Movimento m"
+				+ " where m.dtMovimento = 0");		
 		Query query = entityManager.createQuery(hql.toString());
 		return query.getResultList();
 	}
@@ -54,15 +54,15 @@ public class BalancoDaoImpl implements BalancoDao {
 		Date data1 = null;
 		Date data2 = null;
 		try {
-			data1 = f.parse("15/01/2016");
-			data2 = f.parse("25/02/2016");
+			data1 = f.parse("11/01/2016");
+			data2 = f.parse("15/01/2016");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		StringBuffer hql = new StringBuffer("from Movimento c" 
-				+ " where 1 = 1 and c.data > :dtMov1 and c.data < :dtMov2");
+		StringBuffer hql = new StringBuffer("from Movimento m " 
+				+ "where 1 = 1 and m.dataMovimento > :dtMov1 and m.dataMovimento < :dtMov2");
 		Query query = entityManager.createQuery(hql.toString());
 		query.setParameter("dtMov1", data1);
 		query.setParameter("dtMov2", data2);

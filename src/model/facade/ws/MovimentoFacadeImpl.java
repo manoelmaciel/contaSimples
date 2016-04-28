@@ -27,7 +27,7 @@ public class MovimentoFacadeImpl implements MovimentoFacade {
 	public List<Movimento> getMovimentos(@WebParam(name="codigoMovimento") 
 							Integer codigo) {
 		Movimento movimento = new Movimento();
-		movimento.setCodigo(codigo);
+		movimento.setCodigoMovimento(codigo);
 		return movimentoDao.getMovimentos(movimento);
 	}
 	
@@ -44,7 +44,7 @@ public class MovimentoFacadeImpl implements MovimentoFacade {
 	@WebMethod
 	public void deletar(@WebParam(name="codigoMovimento") Integer codigo) {
 		Movimento movimento = new Movimento();
-		movimento.setCodigo(codigo);
+		movimento.setCodigoMovimento(codigo);
 		movimentoDao.excluir(movimento);
 	}
 

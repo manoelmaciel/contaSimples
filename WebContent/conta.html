@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="contaModule">
+<head>
+	<meta-charset="utf-8">
+	<title>Contas - Conta Simples</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="js/angular.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="control/contaControl.js"></script>
+</head>
+<body ng-controller="contaControl">
+	<div ng-include="'menu.html'"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Cadastro de conta</div>
+		<div class="panel-body">
+			<div>
+			  <!-- Nav tabs -->
+			  <ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="active">
+			    	<a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a>
+			    </li>
+			    <li role="presentation">
+			    	<a href="#dados" aria-controls="dados" role="tab" data-toggle="tab">Dados</a>
+			    </li>
+			  </ul>
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="cadastro">
+					<br>
+					<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
+					<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
+					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
+					<hr/>
+			    	<form>
+					  <div class="form-group col-md-2">
+					    <label for="exampleInputCodigo">Codigo</label>
+					    <input type="number" disabled="true" class="form-control" ng-model="conta.codigoConta" placeholder="Número da conta ... !">
+					  </div>
+					  
+					  <div class="form-group col-md-6">
+					    <label for="exampleInputNome">Cliente</label>
+					    <input type="text" class="form-control" ng-model="conta.cliente.nomeCliente" placeholder="Insira o nome do cliente ... !">
+					  </div>
+					  
+					</form>
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="dados">
+				<br>
+				<input type="text" class="form-control" ng-model="criterio" 
+				placeholder="O que você está procurando?" /><br>
+			    	<table class="table table-hover">
+			    		<th>Número da Conta</th>
+			    		<th>Código do Cliente</th>
+			    		<th>Nome do Cliente</th>
+
+			    		<tr ng-repeat="contaTabela in contas | filter:criterio" ng-click="seleciona(contaTabela);">
+			    			<td>{{contaTabela.codigoConta}}</td>
+			    			<td>{{contaTabela.cliente.codigoCliente}}</td>
+			    			<td>{{contaTabela.cliente.nomeCliente}}</td>
+			    		</tr>
+					</table>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

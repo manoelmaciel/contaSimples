@@ -35,7 +35,7 @@ public class MovimentoFacadeImpl implements model.facade.MovimentoFacade {
 	@Override
 	public List<Movimento> getMovimentos(@PathParam("codigo") Integer codigo) {
 		Movimento movimento = new Movimento();
-		movimento.setCodigo(codigo);
+		movimento.setCodigoMovimento(codigo);
 		return movimentoDao.getMovimentos(movimento);
 	}
 
@@ -57,7 +57,7 @@ public class MovimentoFacadeImpl implements model.facade.MovimentoFacade {
 	@Override
 	public void deletar(@PathParam("codigo") Integer codigo) {
 		Movimento movimento = new Movimento();
-		movimento.setCodigo(codigo);
+		movimento.setCodigoMovimento(codigo);
 		movimentoDao.excluir(movimento);
 	}
 

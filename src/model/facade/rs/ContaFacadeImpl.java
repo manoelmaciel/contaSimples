@@ -37,7 +37,7 @@ public class ContaFacadeImpl implements ContaFacade {
 	@Override
 	public List<Conta> getContas(@PathParam("codigo") Integer codigo) {
 		Conta conta = new Conta();
-		conta.setCodigo(codigo);
+		conta.setCodigoConta(codigo);
 		return contaDao.getContas(conta);
 	}
 	
@@ -59,7 +59,7 @@ public class ContaFacadeImpl implements ContaFacade {
 	@Override
 	public void deletar(@PathParam("codigo") Integer codigo) {
 		Conta conta = new Conta();
-		conta.setCodigo(codigo);
+		conta.setCodigoConta(codigo);
 		contaDao.excluir(conta);
 	}
 

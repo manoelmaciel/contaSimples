@@ -11,7 +11,7 @@ import model.domain.Cliente;
 
 public class ClienteDaoImpl implements ClienteDao {
 	
-	@PersistenceContext(unitName="ContaSimplesPU")
+	@PersistenceContext(unitName="contaSimplesPU")
 	private EntityManager entityManager;
 	
 	@Override
@@ -19,12 +19,12 @@ public class ClienteDaoImpl implements ClienteDao {
 	public List<Cliente> getClientes(Cliente cliente) {
 		StringBuffer hql = new StringBuffer("from Cliente c"
 				+ " where 1 = 1");		
-		if (cliente.getCodigo() != null) {
-			hql.append(" and c.codigo = :codigo");
+		if (cliente.getCodigoCliente() != null) {
+			hql.append(" and c.codigoCliente = :codigo");
 		}
 		Query query = entityManager.createQuery(hql.toString());
-		if (cliente.getCodigo() != null) {
-			query.setParameter("codigo", cliente.getCodigo());
+		if (cliente.getCodigoCliente() != null) {
+			query.setParameter("codigo", cliente.getCodigoCliente());
 		} 
 		return query.getResultList();
 	}
@@ -39,7 +39,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	@Override
 	@Transactional
 	public Cliente salvar(Cliente cliente) {
-		cliente.setCodigo(null);
+		cliente.setCodigoCliente(null);
 		entityManager.persist(cliente);
 		return cliente;
 	}
