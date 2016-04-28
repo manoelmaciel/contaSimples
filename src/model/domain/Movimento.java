@@ -3,6 +3,7 @@ package model.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,7 +43,7 @@ public class Movimento implements Serializable {
 	@Column(name="vlMovimento")
 	private Double valorMovimento;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="conta",referencedColumnName="idConta")
 	private Conta conta;
 

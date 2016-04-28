@@ -2,7 +2,7 @@
 <html ng-app="movimentoModule">
 <head>
 	<meta-charset="utf-8">
-	<title>Movimentos - Conta Simples</title>
+	<title>Despesas - Conta Simples</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<script src="js/angular.min.js"></script>
 	<script src="js/jquery.min.js"></script>
@@ -10,9 +10,9 @@
 	<script src="control/movimentoControl.js"></script>
 </head>
 <body ng-controller="movimentoControl">
-	<div ng-include="'menu.html'"></div>
+	<div ng-include="'menu2.html'"></div>
 	<div class="panel panel-default">
-		<div class="panel-heading">Movimentos - {{movimentos[1].conta.cliente.nomeCliente}}</div>
+		<div class="panel-heading">Lançamento de Despesa - {{movimentos[1].conta.cliente.nomeCliente}}</div>
 		<div class="panel-body">
 			<div>
 			  <!-- Nav tabs -->

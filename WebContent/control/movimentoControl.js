@@ -1,12 +1,12 @@
-var app = angular.module('clienteModule',[]);
+var app = angular.module('movimentoModule',[]);
 
-app.controller('clienteControl',function($scope,$http){
+app.controller('movimentoControl',function($scope,$http){
 	
-	var url = 'http://localhost:8080/contaSimples/rs/cliente';
+	var url = 'http://localhost:8080/contaSimples/rs/movimento';
 	
 	$scope.pesquisar = function(){
-		$http.get(url).success(function (clientesRetorno) {
-			$scope.clientes = clientesRetorno;
+		$http.get(url).success(function (movimentosRetorno) {
+			$scope.movimentos = movimentosRetorno;
 		}).error(function(mensagemErro) {
 			alert(mensagemErro);
 		});   
@@ -15,19 +15,19 @@ app.controller('clienteControl',function($scope,$http){
 	$scope.pesquisar();
 	
 	$scope.novo = function(){
-		$scope.cliente = {};
+		$scope.movimento = {};
 	}
 
     $scope.salvar = function() {
-		if ($scope.cliente.codigo == '') {
-			$http.post(url,$scope.cliente).success(function(cliente) {
-				$scope.clientes.push($scope.cliente);
+		if ($scope.movimento.codigo == '') {
+			$http.post(url,$scope.movimento).success(function(movimento) {
+				$scope.movimentos.push($scope.movimento);
 				$scope.novo();
 			}).error(function (erro) {
 				alert(erro);
 			});
 		} else {
-			$http.put(url,$scope.cliente).success(function(cliente) {
+			$http.put(url,$scope.movimento).success(function(movimento) {
 				$scope.pesquisar();
 				$scope.novo();
 			}).error(function (erro) {
@@ -37,20 +37,20 @@ app.controller('clienteControl',function($scope,$http){
 	}
 	
 	$scope.excluir = function() {
-		if ($scope.cliente.codigo == '') {
-			alert('Selecione um cliente');
+		if ($scope.movimento.codigoMovimento == '') {
+			alert('Selecione um movimento');
 		} else {
-			urlExcluir = url+'/'+$scope.cliente.codigoCliente;
+			urlExcluir = url+'/'+$scope.movimento.codigoMovimento;
 			$http.delete(urlExcluir).success(function () {
 				$scope.pesquisar();
 				$scope.novo();
 			}).error(function (erro) {
-				alert(erro);
+				alert("Houve algum erro ... ");
 			});
 		}
 	}
 	
-	$scope.seleciona = function(clienteTabela) {
-		$scope.cliente = clienteTabela;
+	$scope.seleciona = function(movimentoTabela) {
+		$scope.movimento = movimentoTabela;
 	}
 });

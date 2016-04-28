@@ -1,4 +1,16 @@
-﻿14:53 28/04/2016
+﻿15:59 28/04/2016
+
+	FrontEnd ...
+
+		Cliente, Conta e movimento;
+
+	Parcialmente ok!
+
+	16:53 - Continuando ...
+
+		Vamos tentar melhorar o Movimento;
+
+14:53 28/04/2016
 
 	FrontEnd ...
 
