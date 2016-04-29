@@ -48,4 +48,10 @@ public class MovimentoFacadeImpl implements MovimentoFacade {
 		movimentoDao.excluir(movimento);
 	}
 
+	@Override
+	public List<Movimento> getMovimentosConta(Integer numConta) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

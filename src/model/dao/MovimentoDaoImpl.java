@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import model.domain.Conta;
 import model.domain.Movimento;
 
 public class MovimentoDaoImpl implements MovimentoDao {
@@ -25,6 +26,21 @@ public class MovimentoDaoImpl implements MovimentoDao {
 		Query query = entityManager.createQuery(hql.toString());
 		if (movimento.getCodigoMovimento() != null) {
 			query.setParameter("codigo", movimento.getDataMovimento());
+		} 
+		return query.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Movimento> getMovimentosConta(Conta conta) {
+		StringBuffer hql = new StringBuffer("from Movimento m "
+				+ "where 1 = 1");		
+		if (conta.getCodigoConta() != null) {
+			hql.append(" and m.conta = :umaConta");
+		}
+		Query query = entityManager.createQuery(hql.toString());
+		if (conta.getCodigoConta() != null) {
+			query.setParameter("umaConta", conta);
 		} 
 		return query.getResultList();
 	}

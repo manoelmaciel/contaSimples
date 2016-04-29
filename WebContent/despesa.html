@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="movimentoModule">
+<html ng-app="despesaModule">
 <head>
 	<meta-charset="utf-8">
-	<title>Despesas - Conta Simples</title>
+	<title>Despesa - Conta Simples</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<script src="js/angular.min.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="control/movimentoControl.js"></script>
+	<script src="control/despesaControl.js"></script>
 </head>
-<body ng-controller="movimentoControl">
+<body ng-controller="despesaControl">
 	<div ng-include="'menu2.html'"></div>
 	<div class="panel panel-default">
 		<div class="panel-heading">Lançamento de Despesa - {{movimentos[1].conta.cliente.nomeCliente}}</div>
@@ -39,7 +39,7 @@
 					  </div>
 					  <div class="form-group col-md-6">
 					    <label for="exampleInputNome">Data</label>
-					    <input type="date" class="form-control" ng-model="movimento.dataMovimento" placeholder="Insira a data do movimento ... !">
+					    <input type="text" class="form-control" ng-model="movimento.dataMovimento" placeholder="Insira a data do movimento ... !">
 					  </div>
 					  <div class="form-group col-md-6">
 					    <label for="exampleInputNome">Descrição</label>
@@ -53,18 +53,6 @@
 					    <label for="exampleInputNome">Valor</label>
 					    <input type="text" class="form-control" ng-model="movimento.valorMovimento" placeholder="Digite o ... !">
 					  </div>
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputNome">Código da Conta</label>
-					    <input type="text" class="form-control" ng-model="movimento.conta.codigoConta" placeholder="Digite o ... !">
-					  </div>
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputNome">Código do Cliente</label>
-					    <input type="text" class="form-control" ng-model="movimento.conta.cliente.codigoCliente" placeholder="Digite o ... !">
-					  </div>
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputNome">Nome do Cliente</label>
-					    <input type="text" class="form-control" ng-model="movimento.conta.cliente.nomeCliente" placeholder="Digite o ... !">
-					  </div>
 					</form>
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="dados">
@@ -77,9 +65,6 @@
 			    		<th>Descrição</th>
 			    		<th>Tipo</th>
 			    		<th>Valor</th>
-			    		<th>Codigo - Conta</th>
-			    		<th>Codigo - Cliente</th>
-			    		<th>Nome do Cliente</th>
 
 			    		<tr ng-repeat="movimentoTabela in movimentos | filter:criterio" ng-click="seleciona(movimentoTabela);">
 			    			<td>{{movimentoTabela.codigoMovimento}}</td>
@@ -87,9 +72,6 @@
 			    			<td>{{movimentoTabela.descricaoMovimento}}</td>
 			    			<td>{{movimentoTabela.tipoMovimento}}</td>
 			    			<td>{{movimentoTabela.valorMovimento}}</td>
-			    			<td>{{movimentoTabela.conta.codigoConta}}</td>
-			    			<td>{{movimentoTabela.conta.cliente.codigoCliente}}</td>
-			    			<td>{{movimentoTabela.conta.cliente.nomeCliente}}</td>
 			    		</tr>
 					</table>
 			    </div>

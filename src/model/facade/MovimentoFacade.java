@@ -16,4 +16,6 @@ public interface MovimentoFacade {
 
 	void deletar(Integer codigo);
 
+	List<Movimento> getMovimentosConta(Integer numConta);
+
 }

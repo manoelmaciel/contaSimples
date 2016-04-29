@@ -2,6 +2,7 @@ package model.dao;
 
 import java.util.List;
 
+import model.domain.Conta;
 import model.domain.Movimento;
 
 public interface MovimentoDao {
@@ -13,5 +14,7 @@ public interface MovimentoDao {
 	Movimento salvar(Movimento movimento);
 
 	void atualizar(Movimento movimento);
+
+	List<Movimento> getMovimentosConta(Conta conta);
 
 }

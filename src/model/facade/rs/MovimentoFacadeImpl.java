@@ -14,6 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import model.dao.MovimentoDao;
+import model.domain.Conta;
 import model.domain.Movimento;
 
 @Path("/movimento")
@@ -37,6 +38,15 @@ public class MovimentoFacadeImpl implements model.facade.MovimentoFacade {
 		Movimento movimento = new Movimento();
 		movimento.setCodigoMovimento(codigo);
 		return movimentoDao.getMovimentos(movimento);
+	}
+
+	@GET
+	@Path("conta/{numConta}")
+	@Override
+	public List<Movimento> getMovimentosConta(@PathParam("numConta") Integer numConta) {
+		Conta conta = new Conta();
+		conta.setCodigoConta(numConta);
+		return movimentoDao.getMovimentosConta(conta);
 	}
 
 	@POST
