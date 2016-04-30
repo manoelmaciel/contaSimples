@@ -10,90 +10,94 @@
 	<script src="control/movimentoControl.js"></script>
 </head>
 <body ng-controller="movimentoControl">
-	<div ng-include="'menu.html'"></div>
-	<div class="panel panel-default">
-		<div class="panel-heading">Movimentos - {{movimentos[1].conta.cliente.nomeCliente}}</div>
-		<div class="panel-body">
-			<div>
-			  <!-- Nav tabs -->
-			  <ul class="nav nav-tabs" role="tablist">
-			    <li role="presentation" class="active">
-			    	<a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a>
-			    </li>
-			    <li role="presentation">
-			    	<a href="#dados" aria-controls="dados" role="tab" data-toggle="tab">Dados</a>
-			    </li>
-			  </ul>
-			  <!-- Tab panes -->
-			  <div class="tab-content">
-			    <div role="tabpanel" class="tab-pane active" id="cadastro">
-					<br>
-					<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
-					<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
-					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
-					<hr/>
-			    	<form>
-					  <div class="form-group col-md-2">
-					    <label for="exampleInputCodigo">Código</label>
-					    <input type="number" disabled="true" class="form-control" ng-model="movimento.codigoMovimento" placeholder="Número do movimento ... !">
+    <div class="jumbotron">
+        <div class="container">
+			<div ng-include="'menu.html'"></div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Movimentos</div>
+				<div class="panel-body">
+					<div>
+					  <!-- Nav tabs -->
+					  <ul class="nav nav-tabs" role="tablist">
+					    <li role="presentation" class="active">
+					    	<a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a>
+					    </li>
+					    <li role="presentation">
+					    	<a href="#dados" aria-controls="dados" role="tab" data-toggle="tab">Dados</a>
+					    </li>
+					  </ul>
+					  <!-- Tab panes -->
+					  <div class="tab-content">
+					    <div role="tabpanel" class="tab-pane active" id="cadastro">
+							<br>
+							<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
+							<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
+							<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
+							<hr/>
+					    	<form>
+							  <div class="form-group col-md-2">
+							    <label for="exampleInputCodigo">Código</label>
+							    <input type="number" disabled="true" class="form-control" ng-model="movimento.codigoMovimento" placeholder="Número do movimento ... !">
+							  </div>
+							  <div class="form-group col-md-6">
+							    <label for="exampleInputNome">Data</label>
+							    <input type="date" class="form-control" ng-model="movimento.dataMovimento" placeholder="Insira a data do movimento ... !">
+							  </div>
+							  <div class="form-group col-md-6">
+							    <label for="exampleInputNome">Descrição</label>
+							    <input type="text" class="form-control" ng-model="movimento.descricaoMovimento" placeholder="Digite a ... !">
+							  </div>
+							  <div class="form-group col-md-6">
+							    <label for="exampleInputNome">Tipo</label>
+							    <input type="text" class="form-control" ng-model="movimento.tipoMovimento" placeholder="Digite o ... !">
+							  </div>
+							  <div class="form-group col-md-6">
+							    <label for="exampleInputNome">Valor</label>
+							    <input type="text" class="form-control" ng-model="movimento.valorMovimento" placeholder="Digite o ... !">
+							  </div>
+							  <div class="form-group col-md-6">
+							    <label for="exampleInputNome">Código da Conta</label>
+							    <input type="text" class="form-control" ng-model="movimento.conta.codigoConta" placeholder="Digite o ... !">
+							  </div>
+							  <div class="form-group col-md-6">
+							    <label for="exampleInputNome">Código do Cliente</label>
+							    <input type="text" class="form-control" ng-model="movimento.conta.cliente.codigoCliente" placeholder="Digite o ... !">
+							  </div>
+							  <div class="form-group col-md-6">
+							    <label for="exampleInputNome">Nome do Cliente</label>
+							    <input type="text" class="form-control" ng-model="movimento.conta.cliente.nomeCliente" placeholder="Digite o ... !">
+							  </div>
+							</form>
+					    </div>
+					    <div role="tabpanel" class="tab-pane" id="dados">
+						<br>
+						<input type="text" class="form-control" ng-model="criterio" 
+						placeholder="O que você está procurando?" /><br>
+					    	<table class="table table-hover">
+					    		<th>Código</th>
+					    		<th>Data</th>
+					    		<th>Descrição</th>
+					    		<th>Tipo</th>
+					    		<th>Valor</th>
+					    		<th>Codigo - Conta</th>
+					    		<th>Codigo - Cliente</th>
+					    		<th>Nome do Cliente</th>
+		
+					    		<tr ng-repeat="movimentoTabela in movimentos | filter:criterio" ng-click="seleciona(movimentoTabela);">
+					    			<td>{{movimentoTabela.codigoMovimento}}</td>
+					    			<td>{{movimentoTabela.dataMovimento}}</td>
+					    			<td>{{movimentoTabela.descricaoMovimento}}</td>
+					    			<td>{{movimentoTabela.tipoMovimento}}</td>
+					    			<td>{{movimentoTabela.valorMovimento}}</td>
+					    			<td>{{movimentoTabela.conta.codigoConta}}</td>
+					    			<td>{{movimentoTabela.conta.cliente.codigoCliente}}</td>
+					    			<td>{{movimentoTabela.conta.cliente.nomeCliente}}</td>
+					    		</tr>
+							</table>
+					    </div>
 					  </div>
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputNome">Data</label>
-					    <input type="date" class="form-control" ng-model="movimento.dataMovimento" placeholder="Insira a data do movimento ... !">
-					  </div>
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputNome">Descrição</label>
-					    <input type="text" class="form-control" ng-model="movimento.descricaoMovimento" placeholder="Digite a ... !">
-					  </div>
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputNome">Tipo</label>
-					    <input type="text" class="form-control" ng-model="movimento.tipoMovimento" placeholder="Digite o ... !">
-					  </div>
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputNome">Valor</label>
-					    <input type="text" class="form-control" ng-model="movimento.valorMovimento" placeholder="Digite o ... !">
-					  </div>
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputNome">Código da Conta</label>
-					    <input type="text" class="form-control" ng-model="movimento.conta.codigoConta" placeholder="Digite o ... !">
-					  </div>
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputNome">Código do Cliente</label>
-					    <input type="text" class="form-control" ng-model="movimento.conta.cliente.codigoCliente" placeholder="Digite o ... !">
-					  </div>
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputNome">Nome do Cliente</label>
-					    <input type="text" class="form-control" ng-model="movimento.conta.cliente.nomeCliente" placeholder="Digite o ... !">
-					  </div>
-					</form>
-			    </div>
-			    <div role="tabpanel" class="tab-pane" id="dados">
-				<br>
-				<input type="text" class="form-control" ng-model="criterio" 
-				placeholder="O que você está procurando?" /><br>
-			    	<table class="table table-hover">
-			    		<th>Código</th>
-			    		<th>Data</th>
-			    		<th>Descrição</th>
-			    		<th>Tipo</th>
-			    		<th>Valor</th>
-			    		<th>Codigo - Conta</th>
-			    		<th>Codigo - Cliente</th>
-			    		<th>Nome do Cliente</th>
-
-			    		<tr ng-repeat="movimentoTabela in movimentos | filter:criterio" ng-click="seleciona(movimentoTabela);">
-			    			<td>{{movimentoTabela.codigoMovimento}}</td>
-			    			<td>{{movimentoTabela.dataMovimento}}</td>
-			    			<td>{{movimentoTabela.descricaoMovimento}}</td>
-			    			<td>{{movimentoTabela.tipoMovimento}}</td>
-			    			<td>{{movimentoTabela.valorMovimento}}</td>
-			    			<td>{{movimentoTabela.conta.codigoConta}}</td>
-			    			<td>{{movimentoTabela.conta.cliente.codigoCliente}}</td>
-			    			<td>{{movimentoTabela.conta.cliente.nomeCliente}}</td>
-			    		</tr>
-					</table>
-			    </div>
-			  </div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

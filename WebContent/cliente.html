@@ -10,54 +10,59 @@
 	<script src="control/clienteControl.js"></script>
 </head>
 <body ng-controller="clienteControl">
-	<div ng-include="'menu2.html'"></div>
-	<div class="panel panel-default">
-		<div class="panel-heading">Cadastro de cliente</div>
-		<div class="panel-body">
-			<div>
-			  <!-- Nav tabs -->
-			  <ul class="nav nav-tabs" role="tablist">
-			    <li role="presentation" class="active">
-			    	<a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a>
-			    </li>
-			    <li role="presentation">
-			    	<a href="#dados" aria-controls="dados" role="tab" data-toggle="tab">Dados</a>
-			    </li>
-			  </ul>
-			  <!-- Tab panes -->
-			  <div class="tab-content">
-			    <div role="tabpanel" class="tab-pane active" id="cadastro">
-					<br>
-					<button type="button" class="btn btn-success" ng-click="salvar()">Editar</button>
-					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
-					<hr/>
-			    	<form>
-					  <div class="form-group col-md-2">
-					    <label for="exampleInputCodigo">Codigo</label>
-					    <input type="number" disabled="true" class="form-control" ng-model="cliente.codigoCliente" placeholder="Codigo">
+    <div class="jumbotron">
+        <div class="container">
+			<div ng-include="'menu.html'"></div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Clientes</div>
+				<div class="panel-body">
+					<div>
+					  <!-- Nav tabs -->
+					  <ul class="nav nav-tabs" role="tablist">
+					    <li role="presentation" class="active">
+					    	<a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a>
+					    </li>
+					    <li role="presentation">
+					    	<a href="#dados" aria-controls="dados" role="tab" data-toggle="tab">Dados</a>
+					    </li>
+					  </ul>
+					  <!-- Tab panes -->
+					  <div class="tab-content">
+					    <div role="tabpanel" class="tab-pane active" id="cadastro">
+							<br>
+							<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
+							<button type="button" class="btn btn-success" ng-click="salvar()">Editar</button>
+							<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
+							<hr/>
+					    	<form>
+							  <div class="form-group col-md-2">
+							    <label for="exampleInputCodigo">Codigo</label>
+							    <input type="number" disabled="true" class="form-control" ng-model="cliente.codigoCliente" placeholder="Codigo">
+							  </div>
+							  
+							  <div class="form-group col-md-6">
+							    <label for="exampleInputNome">Nome</label>
+							    <input type="text" class="form-control" ng-model="cliente.nomeCliente" placeholder="Insira o Nome">
+							  </div>
+							  
+							</form>
+					    </div>
+					    <div role="tabpanel" class="tab-pane" id="dados">
+						<br>
+						<input type="text" class="form-control" ng-model="criterio" 
+						placeholder="O que você está procurando?" /><br>
+					    	<table class="table table-hover">
+					    		<th>Codigo</th>
+					    		<th>Nome</th>
+		
+					    		<tr ng-repeat="clienteTabela in clientes | filter:criterio" ng-click="seleciona(clienteTabela);">
+					    			<td>{{clienteTabela.codigoCliente}}</td><td>{{clienteTabela.nomeCliente}}</td>
+					    		</tr>
+							</table>
+					    </div>
 					  </div>
-					  
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputNome">Nome</label>
-					    <input type="text" class="form-control" ng-model="cliente.nomeCliente" placeholder="Insira o Nome">
-					  </div>
-					  
-					</form>
-			    </div>
-			    <div role="tabpanel" class="tab-pane" id="dados">
-				<br>
-				<input type="text" class="form-control" ng-model="criterio" 
-				placeholder="O que você está procurando?" /><br>
-			    	<table class="table table-hover">
-			    		<th>Codigo</th>
-			    		<th>Nome</th>
-
-			    		<tr ng-repeat="clienteTabela in clientes | filter:criterio" ng-click="seleciona(clienteTabela);">
-			    			<td>{{clienteTabela.codigoCliente}}</td><td>{{clienteTabela.nomeCliente}}</td>
-			    		</tr>
-					</table>
-			    </div>
-			  </div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

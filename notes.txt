@@ -1,4 +1,12 @@
-﻿22:15 28/04/2016
+﻿02:03 29/04/2016
+
+	Fiz algumas experiências interessantes ...
+
+		Login, Receitas, Despesas, Movimentos;
+
+	Algumas quase funcionaram!
+
+22:15 28/04/2016
 
 	Despesa, Receita, Movimento ...
 
