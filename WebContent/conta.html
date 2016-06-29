@@ -29,12 +29,16 @@
 					  <!-- Tab panes -->
 					  <div class="tab-content">
 					    <div role="tabpanel" class="tab-pane active" id="cadastro">
+					      <form name="clienteForm" class="css-form" ng-submit="clienteForm.$valid && salvar()" novalidate>
+							<br>
+							<p>Mensagens: </p>
+							<span ng-repeat="mensagem in mensagens">{{mensagem}}<br></span>
+							
 							<br>
 							<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
-							<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
+							<button type="submit" class="btn btn-success">Salvar</button>
 							<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
 							<hr/>
-					    	<form>
 							  <div class="form-group col-md-2">
 							    <label for="exampleInputCodigo">Codigo</label>
 							    <input type="number" disabled="true" class="form-control" ng-model="conta.codigoConta" placeholder="Número da conta ... !">
@@ -45,7 +49,7 @@
 							    <input type="text" class="form-control" ng-model="conta.cliente.nomeCliente" placeholder="Insira o nome do cliente ... !">
 							  </div>
 							  
-							</form>
+						  </form>
 					    </div>
 					    <div role="tabpanel" class="tab-pane" id="dados">
 						<br>

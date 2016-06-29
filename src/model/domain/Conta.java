@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -25,6 +27,8 @@ public class Conta implements Serializable {
 	@Column(name="idConta")
 	private Integer codigoConta;
 	
+	// @NotNull(message="O campo nome é obrigatório ... !")
+	// @Size(min=5,message="O nome do cliente precisa ter pelo menos 5 caracteres ... !")
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="cliente",referencedColumnName="idCliente")
 	private Cliente cliente;

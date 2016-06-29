@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="clienteModule">
 <head>
-	<meta-charset="utf-8">
+	<meta charset="utf-8">
 	<title>Cliente - Conta Simples</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<script src="js/angular.min.js"></script>
@@ -29,34 +29,42 @@
 					  <!-- Tab panes -->
 					  <div class="tab-content">
 					    <div role="tabpanel" class="tab-pane active" id="cadastro">
+					      <form name="clienteForm" class="css-form" ng-submit="clienteForm.$valid && salvar()" novalidate>
 							<br>
+							<p>Mensagens: </p>
+							<span ng-repeat="mensagem in mensagens">{{mensagem}}<br></span>
+							<div ng-show="clienteForm.$submitted">
+						       <div ng-show="clienteForm.nome.$error.required">Preencha o nome</div>
+	      				       <div ng-show="clienteForm.nome.$error.minlength">Nome precisa ter pelo menos 5 caracteres</div>
+	      				    </div>
 							<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
-							<button type="button" class="btn btn-success" ng-click="salvar()">Editar</button>
+							<button type="submit" class="btn btn-success">Salvar</button>
 							<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
 							<hr/>
-					    	<form>
-							  <div class="form-group col-md-2">
+							<span ng-repeat="mensagem in mensagens">{{mensagem}}<br></span>
+							<div class="form-group col-md-2">
 							    <label for="exampleInputCodigo">Codigo</label>
 							    <input type="number" disabled="true" class="form-control" ng-model="cliente.codigoCliente" placeholder="Codigo">
-							  </div>
+							</div>
 							  
-							  <div class="form-group col-md-6">
+							<div class="form-group col-md-6">
 							    <label for="exampleInputNome">Nome</label>
-							    <input type="text" class="form-control" ng-model="cliente.nomeCliente" placeholder="Insira o Nome">
-							  </div>
+							    <input type="text" name="nome" class="form-control" ng-model="cliente.nomeCliente"  placeholder="Insira o nome, com pelo menos 5 caracteres" required="" ng-minlength="5" >
+							</div>
 							  
-							</form>
+						  </form>
 					    </div>
 					    <div role="tabpanel" class="tab-pane" id="dados">
 						<br>
 						<input type="text" class="form-control" ng-model="criterio" 
-						placeholder="O que você está procurando?" /><br>
+						placeholder="O que vocÃª estÃ¡ procurando?" /><br>
 					    	<table class="table table-hover">
 					    		<th>Codigo</th>
 					    		<th>Nome</th>
 		
 					    		<tr ng-repeat="clienteTabela in clientes | filter:criterio" ng-click="seleciona(clienteTabela);">
-					    			<td>{{clienteTabela.codigoCliente}}</td><td>{{clienteTabela.nomeCliente}}</td>
+					    			<td>{{clienteTabela.codigoCliente}}</td>
+					    			<td>{{clienteTabela.nomeCliente}}</td>
 					    		</tr>
 							</table>
 					    </div>

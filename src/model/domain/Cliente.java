@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -22,6 +24,8 @@ public class Cliente implements Serializable {
 	@Column(name="idCliente")
 	private Integer codigoCliente;
 	
+	@NotNull(message="O campo nome é obrigatório ... !")
+	@Size(min=5,message="Nome do cliente precisa ter pelo menos 5 caracteres ... !")
 	@Column(name="nmCliente")
 	private String nomeCliente;
 	

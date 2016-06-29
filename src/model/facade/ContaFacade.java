@@ -2,17 +2,22 @@ package model.facade;
 
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.executable.ValidateOnExecution;
+
 import model.domain.Conta;
 
 public interface ContaFacade {
 	
-	Conta salvar(Conta conta);
+	@ValidateOnExecution
+	Conta salvar(@Valid Conta conta);
 
 	List<Conta> getContas();
 
 	List<Conta> getContas(Integer codigo);
 
-	void atualizar(Conta conta);
+	@ValidateOnExecution
+	void atualizar(@Valid Conta conta);
 
 	void deletar(Integer codigo);
 
